@@ -1,13 +1,12 @@
 .layout {
     display: flex;
     height: calc(100vh - 60px);
-    /* Adjust based on navbar height */
     background-color: var(--gray-50);
     overflow: hidden;
 }
 
 .sidebar {
-    width: 300px;
+    width: 280px;
     background: white;
     border-right: 1px solid var(--border);
     display: flex;
@@ -45,12 +44,135 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all 0.15s ease;
 }
 
 .toolItem:hover {
     border-color: var(--primary);
+    background: white;
 }
 
+.toolItem.selected {
+    border-color: #f97316;
+    background: #fff7ed;
+}
+
+.toolItemContent {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.confidence {
+    font-size: 0.75rem;
+    color: #16a34a;
+    background: #f0fdf4;
+    padding: 0.125rem 0.375rem;
+    border-radius: 9999px;
+}
+
+.deleteIcon {
+    color: var(--gray-300);
+    cursor: pointer;
+    transition: color 0.15s ease;
+}
+
+.deleteIcon:hover {
+    color: #ef4444;
+}
+
+.emptyState {
+    text-align: center;
+    color: var(--gray-300);
+    font-size: 0.875rem;
+    padding: 2rem 1rem;
+}
+
+.maskToggle {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+}
+
+.maskToggle label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--gray-800);
+    cursor: pointer;
+}
+
+.maskToggle input {
+    accent-color: var(--primary);
+}
+
+/* AI Section */
+.aiSection {
+    padding: 1rem;
+    border-top: 1px solid var(--border);
+    background: var(--gray-50);
+}
+
+.aiHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    color: var(--gray-800);
+}
+
+.loadAiButton {
+    width: 100%;
+    padding: 0.625rem 1rem;
+    background: linear-gradient(135deg, #8b5cf6, #6366f1);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: opacity 0.15s ease;
+}
+
+.loadAiButton:hover {
+    opacity: 0.9;
+}
+
+.loadAiButton:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.aiReady {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #16a34a;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Main Area */
 .mainArea {
     flex: 1;
     display: flex;
@@ -59,19 +181,126 @@
 }
 
 .toolbar {
-    height: 50px;
+    min-height: 56px;
     background: white;
     border-bottom: 1px solid var(--border);
     display: flex;
     align-items: center;
-    padding: 0 1rem;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
     gap: 1rem;
+}
+
+.toolbarGroup {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.toolGroup {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.groupLabel {
+    font-size: 0.75rem;
+    color: var(--gray-300);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-right: 0.5rem;
+}
+
+.divider {
+    width: 1px;
+    height: 24px;
+    background: var(--border);
+    margin: 0 0.5rem;
+}
+
+.toolButton {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.75rem;
+    background: var(--gray-50);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    color: var(--gray-800);
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.toolButton:hover:not(:disabled) {
+    background: white;
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.toolButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.toolButton.active {
+    background: #eff6ff;
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.toolButton.disabled {
+    opacity: 0.6;
+}
+
+.statusArea {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.statusText {
+    font-size: 0.875rem;
+    color: var(--gray-300);
+    padding: 0.375rem 0.75rem;
+    background: var(--gray-50);
+    border-radius: var(--radius);
+}
+
+.aiStatusBadge {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.aiStatusBadge.loading {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.aiStatusBadge.processing {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.aiStatusBadge.complete {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.aiStatusBadge.error {
+    background: #fee2e2;
+    color: #991b1b;
 }
 
 .canvasContainer {
     flex: 1;
     background-color: #e5e5e5;
-    /* App background for canvas area */
     position: relative;
     overflow: hidden;
     display: flex;
@@ -79,12 +308,7 @@
     justify-content: center;
 }
 
-.canvas {
-    background: white;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    display: block;
-}
-
+/* Export Panel */
 .exportPanel {
     width: 280px;
     background: white;
@@ -92,12 +316,11 @@
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
 }
 
 .panelTitle {
     font-weight: 600;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .controlGroup {
@@ -109,28 +332,90 @@
     font-size: 0.875rem;
     color: var(--gray-800);
     margin-bottom: 0.375rem;
+    font-weight: 500;
+}
+
+.hint {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--gray-300);
+    margin-top: 0.25rem;
 }
 
 .select,
 .input {
     width: 100%;
-    padding: 0.5rem;
+    padding: 0.5rem 0.75rem;
     border: 1px solid var(--border);
     border-radius: var(--radius);
     font-size: 0.875rem;
+    background: white;
+}
+
+.select:focus,
+.input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.exportInfo {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background: var(--gray-50);
+    border-radius: var(--radius);
+}
+
+.infoItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #16a34a;
+}
+
+.infoItem + .infoItem {
+    margin-top: 0.5rem;
 }
 
 .primaryButton {
     width: 100%;
     background: var(--primary);
     color: white;
-    padding: 0.75rem;
+    padding: 0.75rem 1rem;
     border-radius: var(--radius);
     border: none;
     font-weight: 500;
+    font-size: 0.9375rem;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease;
 }
 
-.primaryButton:hover {
+.primaryButton:hover:not(:disabled) {
     background: var(--primary-hover);
+}
+
+.primaryButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.iconButton {
+    background: none;
+    border: none;
+    padding: 0.25rem;
+    cursor: pointer;
+    color: var(--gray-300);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius);
+}
+
+.iconButton:hover {
+    background: var(--gray-50);
+    color: var(--gray-800);
 }
