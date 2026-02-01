@@ -1,0 +1,121 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    flex-grow: 1;
+}
+
+.hero {
+    padding: 5rem 1.5rem;
+    text-align: center;
+    background-color: var(--gray-50);
+    border-bottom: 1px solid var(--border);
+}
+
+.heroContent {
+    max-width: 56rem;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--foreground);
+    margin-bottom: 1.5rem;
+}
+
+.highlight {
+    color: var(--primary);
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: #4b5563;
+    /* gray-600 */
+    margin-bottom: 2rem;
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ctaButton {
+    display: inline-block;
+    background-color: var(--primary);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: var(--radius);
+    font-size: 1.125rem;
+    font-weight: 500;
+    transition: background-color 0.2s;
+    border: none;
+    cursor: pointer;
+}
+
+.ctaButton:hover {
+    background-color: var(--primary-hover);
+}
+
+.features {
+    padding: 4rem 1.5rem;
+}
+
+.featuresContent {
+    max-width: 72rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.sectionTitle {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.card {
+    padding: 1.5rem;
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.stepIcon {
+    height: 3rem;
+    width: 3rem;
+    background-color: #dbeafe;
+    /* blue-100 */
+    color: var(--primary);
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem auto;
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+.cardTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.cardText {
+    color: #4b5563;
+}
